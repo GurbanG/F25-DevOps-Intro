@@ -1,0 +1,35 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: 
+  push:
+    branches:
+      - main
+      - feature/lab3
+  workflow_dispatch:
+
+jobs:
+  basic-info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Print greeting
+        run: echo "Hello from GitHub Actions!"
+
+      - name: Gather system information
+        run: |
+          echo "### SYSTEM INFORMATION START ###"
+          echo "CPU Info:"
+          lscpu
+          echo
+          echo "Memory Info:"
+          free -h
+          echo
+          echo "Disk Info:"
+          df -h
+          echo
+          echo "Environment Variables:"
+          env
+          echo "### SYSTEM INFORMATION END ###"
